@@ -14,7 +14,40 @@ containg many packages designed for data science.
 
 
 ```{r cars}
-tidyverse::tidyverse_packages()
-```
 
+tidyverse::tidyverse_packages()
+
+```
+### ggplot2
+
+```{r}
+# The easiest way to get ggplot2 is to install the whole tidyverse:
+
+library(ggplot2)
+
+ggplot(mpg, aes(displ, hwy, colour = class)) + 
+  geom_point()
+```
+```{r}
+library(tidyverse)
+setwd("C:/Users/Zara/Documents/tmp/Canvas-Data-Technologies-for-Statistical-Analysis/data")
+ames_police <- read_csv("isu-pd.csv") 
+dim(ames_police)
+head(ames_police)
+str(ames_police$Classification)
+
+library("dplyr") 
+select(ames_police,Classification)
+
+cl<- ames_police %>%
+  group_by(Classification) %>%
+  summarize(n())
+
+library(plyr)
+head(arrange(cl,desc(cl$`n()`)), n = 50)
+
+
+
+
+```
 
